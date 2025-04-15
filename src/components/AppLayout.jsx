@@ -32,7 +32,7 @@ const AppLayout = ({ children }) => {
   const Sidebar = ({ className = "" }) => (
     <aside className={`sidebar ${className}`}>
       <div className="sidebar-header">
-        <h1 className="sidebar-title">E-Finnance</h1>
+        <h1 className="sidebar-title">E-Finance</h1>
       </div>
       <div className="sidebar-nav">
         <nav>
@@ -77,7 +77,7 @@ const AppLayout = ({ children }) => {
         <SheetContent side="left" className="p-0 mobile-sidebar">
           <div className="flex flex-col h-full">
             <div className="sidebar-header">
-              <h1 className="sidebar-title">E-Finnance</h1>
+              <h1 className="sidebar-title">E-Finance</h1>
             </div>
             <div className="sidebar-nav">
               <nav>

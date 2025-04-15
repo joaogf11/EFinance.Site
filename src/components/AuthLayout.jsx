@@ -21,14 +21,14 @@ const AuthLayout = ({ children, title, subtitle }) => {
               <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
             </svg>
           </div>
-          <h1 className="auth-title">E-Finnance</h1>
+          <h1 className="auth-title">E-Finance</h1>
           <p className="auth-subtitle">{subtitle || "Gerencie suas finanças com facilidade"}</p>
         </div>
         
         {children}
         
         <div className="auth-footer">
-          <p> {new Date().getFullYear()} E-Finnance. Todos os direitos reservados.</p>
+          <p> {new Date().getFullYear()} E-Finance. Todos os direitos reservados.</p>
         </div>
       </div>
     </div>
