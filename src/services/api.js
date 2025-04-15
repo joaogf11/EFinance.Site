@@ -36,10 +36,8 @@ api.interceptors.response.use(
       console.error('Status:', error.response.status);
       console.error('Dados:', error.response.data);
     } else if (error.request) {
-      // A requisição foi feita mas não houve resposta
       console.error('Sem resposta do servidor:', error.request);
     } else {
-      // Algo aconteceu ao configurar a requisição
       console.error('Erro ao configurar a requisição:', error.message);
     }
     return Promise.reject(error);
