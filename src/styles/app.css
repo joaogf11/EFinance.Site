@@ -1,0 +1,112 @@
+.app{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+}
+
+.app::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/public/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(50%);
+    z-index: -1;
+}
+
+.app_container{
+    width: 450px;
+    height: auto;
+    min-height: 600px;
+    z-index: 1;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--sombra-padrao);
+    text-align: center;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo{
+    width: 40%;
+    margin-bottom: 1rem;
+    transition: var(--transicao);
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.app_container h1{
+    margin-top: 0.5rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--azul-escuro);
+}
+
+.app_container h2{
+    margin-top: 2rem;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--cinza-medio);
+}
+
+.form_login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.form_login input{
+    margin-top: 1.25rem;
+    padding: 0.75rem 1rem;
+    width: 75%;
+    height: auto;
+    border: 1px solid var(--cinza-claro);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transicao);
+}
+
+.form_login input:focus {
+    border-color: var(--verde);
+    box-shadow: 0 0 0 2px rgba(48, 122, 48, 0.2);
+}
+
+.login_btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2.5rem;
+    width: 180px;
+    height: 48px;
+    background-color: var(--verde);
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: white;
+    box-shadow: 0 4px 8px rgba(48, 122, 48, 0.25);
+    text-decoration: none;
+    transition: var(--transicao);
+}
+
+.login_btn:hover {
+    background-color: var(--verde-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(48, 122, 48, 0.3);
+}
+
+.login_btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(48, 122, 48, 0.2);
+}

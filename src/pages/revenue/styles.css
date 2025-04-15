@@ -1,0 +1,104 @@
+.revenue-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.revenue-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.revenue-header h1 {
+  color: #2c3e50;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.revenue-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.revenue-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.revenue-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.revenue-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.revenue-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.revenue-values h3 {
+  color: #27ae60;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.revenue-date {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+.revenue-description {
+  color: #2c3e50;
+  font-size: 0.9rem;
+  margin: 0;
+  padding: 0.5rem;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+}
+
+.revenue-category p {
+  color: #2c3e50;
+  font-size: 0.9rem;
+  margin: 0;
+  padding: 0.5rem;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.2rem;
+  color: #2c3e50;
+}
+
+@media (max-width: 768px) {
+  .revenue-container {
+    padding: 1rem;
+  }
+
+  .revenue-header h1 {
+    font-size: 2rem;
+  }
+
+  .revenue-list {
+    grid-template-columns: 1fr;
+  }
+} 

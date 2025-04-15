@@ -1,0 +1,180 @@
+/* Categories styles - Inspired by Organizze */
+.categories-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding: 1.5rem;
+  gap: 1.5rem;
+  overflow-y: auto;
+  background-color: #f7f9fc;
+  margin: 0;
+  border: none;
+  box-sizing: border-box;
+}
+
+.categories-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.categories-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.categories-date {
+  font-size: 0.875rem;
+  color: #7f8c8d;
+}
+
+.categories-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #00b09b;
+  color: white;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.categories-button:hover {
+  background-color: #008c7a;
+}
+
+.categories-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.categories-table-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  flex: 1;
+  transition: box-shadow 0.2s ease;
+}
+
+.categories-table-card:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.categories-table-container {
+  overflow-x: auto;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.categories-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.categories-table-header {
+  background-color: #f7f9fc;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.categories-table-head {
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  color: #34495e;
+}
+
+.categories-table-row {
+  border-bottom: 1px solid #ecf0f1;
+  transition: background-color 0.2s ease;
+}
+
+.categories-table-row:hover {
+  background-color: rgba(0, 176, 155, 0.05);
+}
+
+.categories-table-cell {
+  padding: 0.75rem 1rem;
+  color: #2c3e50;
+}
+
+.categories-no-data {
+  text-align: center;
+  padding: 2rem 0;
+  color: #7f8c8d;
+}
+
+.categories-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: #7f8c8d;
+}
+
+.category-type {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.category-type.revenue {
+  background-color: rgba(86, 171, 47, 0.2);
+  color: #3d8b3d;
+}
+
+.category-type.expense {
+  background-color: rgba(228, 58, 21, 0.2);
+  color: #c0392b;
+}
+
+.categories-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.categories-action-button {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+.categories-action-button.edit {
+  color: #2196f3;
+  border-color: #2196f3;
+}
+
+.categories-action-button.delete {
+  color: #f44336;
+  border-color: #f44336;
+}
+
+.error-card {
+  background-color: #feeced;
+  border: 1px solid #e74c3c;
+  color: #c0392b;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .categories-container {
+    padding: 1rem;
+  }
+  
+  .categories-actions {
+    flex-direction: column;
+  }
+}

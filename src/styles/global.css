@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('./reset.css');
+
+:root{
+    --fonte: "Urbanist", sans-serif;
+    --verde: #307a30;
+    --verde-hover: #25602a;
+    --azul-escuro: #121b38;
+    --fundo: #f5f5f7;
+    --cinza-claro: #e0e0e0;
+    --cinza-medio: #9e9e9e;
+    --sombra-padrao: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+    --transicao: all 0.3s ease;
+}
+
+body{
+    font-family: var(--fonte);
+    background-color: var(--fundo);
+    color: #333;
+    line-height: 1.6;
+}
+
+a{
+    color: var(--verde);
+    text-decoration: none;
+    transition: var(--transicao);
+}
+
+a:hover {
+    color: var(--verde-hover);
+}
+
+button, .btn {
+    cursor: pointer;
+    transition: var(--transicao);
+}
+
+input, textarea, select {
+    font-family: var(--fonte);
+    outline: none;
+    transition: var(--transicao);
+}
+
