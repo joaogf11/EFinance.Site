@@ -7,8 +7,8 @@ import Expenses from "../pages/expenses";
 import Categories from "../pages/categories";
 import Revenue from "../pages/revenue";
 import Dashboard from "../pages/dashboard";
+import Profile from "../pages/perfil";
 
-// Protected Route component
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
   
@@ -58,6 +58,14 @@ const AppRoutes = () => {
           element={
             <ProtectedRoute>
               <Revenue />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/profile" 
+          element={
+            <ProtectedRoute>
+              <Profile />
             </ProtectedRoute>
           } 
         />
