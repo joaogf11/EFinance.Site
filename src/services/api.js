@@ -25,7 +25,6 @@ api.interceptors.request.use(
   }
 );
 
-// Interceptor para logar respostas
 api.interceptors.response.use(
   (response) => {
     console.log('Resposta recebida:', response);

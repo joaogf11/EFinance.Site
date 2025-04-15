@@ -10,9 +10,11 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+    
     if (token) {
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      setUser({ token });
+      setUser({ token, id: userId });
     }
     setLoading(false);
   }, []);
@@ -22,8 +24,10 @@ export const AuthProvider = ({ children }) => {
       const response = await authService.login(credentials);
       if (response.token) {
         localStorage.setItem('token', response.token);
+        localStorage.setItem('userId', response.userId);
+        
         api.defaults.headers.common['Authorization'] = `Bearer ${response.token}`;
-        setUser({ token: response.token });
+        setUser({ token: response.token, id: response.id });
         return response;
       }
     } catch (error) {
@@ -34,6 +38,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('userId');
     delete api.defaults.headers.common['Authorization'];
     setUser(null);
   };
@@ -59,4 +64,4 @@ export const useAuth = () => {
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
-}; 
+};
