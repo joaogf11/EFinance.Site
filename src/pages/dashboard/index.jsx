@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 import AppLayout from '../../components/AppLayout';
-import { PlusCircle, ArrowUpRight, ArrowDownRight, Wallet, BarChart4, Calendar } from 'lucide-react';
+import { ArrowUpRight, ArrowDownRight, Wallet, BarChart4, Calendar } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import './dashboard-styles.css';
 

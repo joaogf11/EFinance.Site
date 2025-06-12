@@ -28,7 +28,16 @@ const Cadastro = () => {
             await register(formData);
             navigate('/dashboard');
         } catch (err) {
-            setError('Erro ao cadastrar. Tente novamente.');
+            let message = 'Erro ao cadastrar. Tente novamente.';
+            if (err.response && err.response.data && err.response.data.erros) {
+                const errors = err.response.data.erros;
+                if (Array.isArray(errors)) {
+                    message = errors.join(' ');
+                } else if (typeof errors === 'string') {
+                    message = errors;
+                }
+            }
+            setError(message);
         }
     };
 

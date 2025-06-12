@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Menu, X, BarChart, PieChart, DollarSign, Tag, Home, User, LogOut } from 'lucide-react';
+import { Menu, BarChart, DollarSign, Tag, Home, User, LogOut } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
 import { Button } from './ui/button';
 import { useAuth } from '../contexts/AuthContext';

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import * as Dialog from '@radix-ui/react-dialog';
+import { Input } from '../../components/ui/input';
 import api from '../../services/api';
 import AppLayout from '../../components/AppLayout';
 import { Card, CardHeader, CardTitle, CardContent } from '../../components/ui/card';
@@ -13,6 +15,12 @@ const Expenses = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [monthlyData, setMonthlyData] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [isExpenseModalOpen, setIsExpenseModalOpen] = useState(false);
+  const [newExpenseValue, setNewExpenseValue] = useState('');
+  const [newExpenseDueDate, setNewExpenseDueDate] = useState('');
+  const [newExpenseCategoryId, setNewExpenseCategoryId] = useState('');
+  const [newExpenseDescription, setNewExpenseDescription] = useState('');
 
   useEffect(() => {
     const fetchExpenses = async () => {
@@ -29,7 +37,40 @@ const Expenses = () => {
     };
 
     fetchExpenses();
+    // fetch categories for expense
+    const fetchCategories = async () => {
+      try {
+        const res = await api.get('/api/category/get-category');
+        setCategories(res.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchCategories();
   }, []);
+
+  const handleCreateExpense = async (e) => {
+    e.preventDefault();
+    try {
+      const userId = localStorage.getItem('userId');
+      const payload = {
+        value: parseFloat(newExpenseValue),
+        dueDate: newExpenseDueDate,
+        category: newExpenseCategoryId,
+        description: newExpenseDescription,
+        userId,
+      };
+      const response = await api.post('/api/expense/new-expense', payload);
+      setExpenses(prev => [response.data, ...prev]);
+      setIsExpenseModalOpen(false);
+      setNewExpenseValue('');
+      setNewExpenseDueDate('');
+      setNewExpenseCategoryId('');
+      setNewExpenseDescription('');
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const formatCurrency = (value) => {
     return new Intl.NumberFormat('pt-BR', {
@@ -71,10 +112,68 @@ const Expenses = () => {
           <div className="expenses-date">
             {new Date().toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' })}
           </div>
-          <Button className="expenses-button">
+          <Button className="expenses-button" onClick={() => setIsExpenseModalOpen(true)}>
             <PlusCircle className="expenses-icon" />
             Nova Despesa
           </Button>
+          {/* Create Expense Modal */}
+          <Dialog.Root open={isExpenseModalOpen} onOpenChange={setIsExpenseModalOpen}>
+            <Dialog.Overlay className="fixed inset-0 bg-black/50" />
+            <Dialog.Content className="fixed bg-white p-6 rounded-lg shadow-md top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md">
+              <Dialog.Title className="text-lg font-semibold">Nova Despesa</Dialog.Title>
+              <Dialog.Description className="text-sm text-muted-foreground mb-4">Preencha os dados da nova despesa.</Dialog.Description>
+              <form onSubmit={handleCreateExpense}>
+                <div className="mb-4">
+                  <label htmlFor="expense-value" className="block text-sm font-medium mb-1">Valor</label>
+                  <Input
+                    id="expense-value"
+                    type="number"
+                    step="0.01"
+                    value={newExpenseValue}
+                    onChange={e => setNewExpenseValue(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label htmlFor="expense-date" className="block text-sm font-medium mb-1">Data de Vencimento</label>
+                  <Input
+                    id="expense-date"
+                    type="date"
+                    value={newExpenseDueDate}
+                    onChange={e => setNewExpenseDueDate(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label htmlFor="expense-category" className="block text-sm font-medium mb-1">Categoria</label>
+                  <select
+                    id="expense-category"
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-50"
+                    value={newExpenseCategoryId}
+                    onChange={e => setNewExpenseCategoryId(e.target.value)}
+                    required
+                  >
+                    <option value="">Selecione uma categoria</option>
+                    {categories.map(cat => (
+                      <option key={cat.id} value={cat.id}>{cat.title}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="mb-4">
+                  <label htmlFor="expense-description" className="block text-sm font-medium mb-1">Descrição</label>
+                  <Input
+                    id="expense-description"
+                    value={newExpenseDescription}
+                    onChange={e => setNewExpenseDescription(e.target.value)}
+                  />
+                </div>
+                <div className="flex justify-end space-x-2">
+                  <Button variant="outline" type="button" onClick={() => setIsExpenseModalOpen(false)}>Cancelar</Button>
+                  <Button type="submit">Criar</Button>
+                </div>
+              </form>
+            </Dialog.Content>
+          </Dialog.Root>
         </div>
 
         <div className="expenses-summary-grid">
